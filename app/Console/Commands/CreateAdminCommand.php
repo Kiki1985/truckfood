@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class CreateAdminCommand extends Command
@@ -45,14 +45,14 @@ class CreateAdminCommand extends Command
         if($user !== null) {
             $this->info('email adress already exists');
         }else{
-        $password = $this->ask('Insert your password');
+            $password = $this->ask('Insert your password');
         if(strlen($password) < 8) {
             $this->info('password must be at least 8 characters long');
         }else{
             $admin = User::create([
                 'name' => $name,
                 'email' => $email,
-                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password 
+                'password' => Hash::make($password), 
                 'role' => 'Admin' 
             ]);
             $this->info('Admin added: ' .$admin->name);
