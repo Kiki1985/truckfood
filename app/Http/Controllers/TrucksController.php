@@ -26,7 +26,9 @@ class TrucksController extends Controller
     public function edit(Truck $truck)
     {
         $this->authorize('update', $truck);
-        return view('trucks.edit', compact('truck'));
+        $states = State::all();
+        return view('trucks.edit', compact('truck', 'states'));
+       
     }
 
     public function update(Truck $truck)

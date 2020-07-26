@@ -20,7 +20,7 @@
                     @csrf
                       <div class="form-group">
                         <label for="truckName">Truck name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter truck name" required>
+                        <input type="text" name="name" class="form-control" placeholder="Enter truck name" value="{{old('name')}}" required>
                       </div>
                       <div class="form-group">
                         <label for="state">State</label>
@@ -33,7 +33,7 @@
                       </div>
                       <div class="form-group">
                         <label for="town">Town</label>
-                        <input type="text" name="town" class="form-control" placeholder="Enter town" required>
+                        <input type="text" name="town" class="form-control" placeholder="Enter town" value="{{old('name')}}" required>
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>
