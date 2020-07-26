@@ -15,23 +15,27 @@ class TrucksController extends Controller
 
     public function store(Request $request)
     {
+        abort_unless(auth()->user(), 403);
     	auth()->user()->addTruck($this->validateTruck());
     	return redirect()->route('home');
     }
 
     public function edit(Truck $truck)
     {
+        $this->authorize('update', $truck);
         return view('trucks.edit', compact('truck'));
     }
 
     public function update(Truck $truck)
     {
+        $this->authorize('update', $truck);
         $truck->update($this->validateTruck());
         return redirect()->route('home');
     }
 
     public function destroy(Truck $truck)
     {
+        $this->authorize('update', $truck);
         $truck->delete();
         return redirect()->route('home');
     }

@@ -10,34 +10,23 @@
                 </div>
                 <table class="table mb-0">
                   <thead>
-                  
-                    <tr>
+                   <tr>
                       <th scope="col">Name</th>
                       @if(auth()->user()->role === "Admin")
-                      
                       <th scope="col">Owner</th>
-
-                    
-                    @endif
+                      @endif
                       <th></th>
                       <th></th>
                     </tr>
-
-                    
-                    
                   </thead>
                   <tbody>
                     @foreach($trucks as $truck)
                     <tr>
                       <td>{{$truck->name}}</td>
                       @if(auth()->user()->role === "Admin")
-                      
-                        <td>{{$truck->user->name}}</td>
-                      
-                    @endif
-
+                      <td>{{$truck->user->name}}</td>
+                      @endif
                       <td><a href="/trucks/{{$truck->id}}/edit"><button type="submit" class="btn btn-primary btn-sm">Edit</button></a></td>
-
                       <td>
                       <form method="POST" action="/trucks/{{$truck->id}}/delete">
                       @method('DELETE')
@@ -45,13 +34,8 @@
                           <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
                       </form>
                       </td>
-
                       </tr>
-                    
-                        
-                    
-                    
-                    @endforeach
+                     @endforeach
                   </tbody>
                 </table>
             </div>

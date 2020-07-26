@@ -23,6 +23,20 @@
                         <input type="text" name="name" class="form-control" placeholder="Enter truck name" required>
                       </div>
                       <div class="form-group">
+                        <label for="state">State</label>
+                        <select class="form-control">
+                          <option value="" selected disabled>Select state</option>
+                          <option> Alabama</option>
+                          <option> Alaska</option>
+                          <option>Arizona</option>
+                          <option> Arkansas</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="town">Town</label>
+                        <input type="text" name="town" class="form-control" placeholder="Enter town" required>
+                      </div>
+                      <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" class="form-control" rows="3" required></textarea>
                       </div>
