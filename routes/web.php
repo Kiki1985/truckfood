@@ -14,10 +14,10 @@ Route::get('/trucks/create', 'TrucksController@create');
 
 Route::post('/trucks/create', 'TrucksController@store');
 
-Route::get('/trucks/{id}/edit', 'TrucksController@edit');
+Route::get('/trucks/{truck}/edit', 'TrucksController@edit');
 
-Route::put('/trucks/{id}/update', 'TrucksController@update');
+Route::put('/trucks/{truck}/update', 'TrucksController@update');
 
-Route::delete('/trucks/{id}/delete', 'TrucksController@destroy');
+Route::delete('/trucks/{truck}/delete', 'TrucksController@destroy');
 
 

@@ -19,22 +19,19 @@ class TrucksController extends Controller
     	return redirect()->route('home');
     }
 
-    public function edit($id)
+    public function edit(Truck $truck)
     {
-        $truck = Truck::find($id);
         return view('trucks.edit', compact('truck'));
     }
 
-    public function update($id)
+    public function update(Truck $truck)
     {
-        $truck = Truck::find($id);
         $truck->update($this->validateTruck());
         return redirect()->route('home');
     }
 
-    public function destroy($id)
+    public function destroy(Truck $truck)
     {
-        $truck = Truck::find($id);
         $truck->delete();
         return redirect()->route('home');
     }
