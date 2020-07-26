@@ -15,6 +15,8 @@
                       @if(auth()->user()->role === "Admin")
                       <th scope="col">Owner</th>
                       @endif
+                      <th>State</th>
+                      <th>Town</th>
                       <th></th>
                       <th></th>
                     </tr>
@@ -26,6 +28,8 @@
                       @if(auth()->user()->role === "Admin")
                       <td>{{$truck->user->name}}</td>
                       @endif
+                      <td>{{$truck->state->state}}</td>
+                      <td>{{$truck->town}}</td>
                       <td><a href="/trucks/{{$truck->id}}/edit"><button type="submit" class="btn btn-primary btn-sm">Edit</button></a></td>
                       <td>
                       <form method="POST" action="/trucks/{{$truck->id}}/delete">
