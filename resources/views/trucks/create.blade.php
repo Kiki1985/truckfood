@@ -24,12 +24,11 @@
                       </div>
                       <div class="form-group">
                         <label for="state">State</label>
-                        <select class="form-control">
+                        <select name="state_id" class="form-control">
                           <option value="" selected disabled>Select state</option>
-                          <option> Alabama</option>
-                          <option> Alaska</option>
-                          <option>Arizona</option>
-                          <option> Arkansas</option>
+                          @foreach($states as $state)
+                          <option value="{{$state->id}}">{{$state->state}}</option>
+                          @endforeach
                         </select>
                       </div>
                       <div class="form-group">

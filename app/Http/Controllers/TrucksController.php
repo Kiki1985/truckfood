@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Truck;
+use App\State;
 
 class TrucksController extends Controller
 {
     public function create()
     {
     	abort_unless(auth()->user(), 403);
-    	return view('trucks.create');
+        return view('trucks.create', [
+            'states' => State::all()
+        ]);
     }
 
     public function store(Request $request)
@@ -45,6 +48,8 @@ class TrucksController extends Controller
         return request()->validate([
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
+            'state_id' =>'required',
+            'town' => 'required|min:3|max:255',
             'website' => 'sometimes|max:25',
             'instagram' => 'sometimes|max:25',
             'facebook' => 'sometimes|max:25',
