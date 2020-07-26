@@ -1,0 +1,47 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+
+                   <h5 class="mb-4">Create a new truck</h5>
+
+                    <form method="POST" action="/trucks/create">
+                    @csrf
+                      <div class="form-group">
+                        <label for="truckName">Truck name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter truck name" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" class="form-control" rows="3" required></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="website">Website</label>
+                        <input name="website" type="text" class="form-control" placeholder="Enter website">
+                      </div>
+                      <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input name="instagram" type="text" class="form-control" placeholder="Enter instagram">
+                      </div>
+                      <div class="form-group">
+                        <label for="facebook">Facebook</label>
+                        <input name="facebook" type="text" class="form-control" placeholder="Enter facebook">
+                      </div>
+                      <div class="form-group">
+                        <label for="twitter">Twitter</label>
+                        <input name="twitter" type="text" class="form-control" placeholder="Enter twitter">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

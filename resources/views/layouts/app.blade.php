@@ -49,6 +49,15 @@
                                 </li>
                             @endif
                         @else
+                            @if(\Request::is('trucks'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/trucks/create">Add</a>
+                                </li>
+                            @else
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="/trucks">Home</a>
+                                </li>   
+                            @endif    
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

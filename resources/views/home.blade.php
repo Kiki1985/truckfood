@@ -6,13 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
+                @foreach($trucks as $truck)
+                <div class="card-body ">
 
-                <div class="card-body">
-
-                    @foreach($trucks as $truck)
-                        {{$truck->name}}
-                    @endforeach
+                    
+                    {{$truck->name}}
+                    
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

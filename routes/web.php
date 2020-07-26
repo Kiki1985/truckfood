@@ -9,3 +9,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/trucks', 'HomeController@index')->name('home');
+
+Route::get('/trucks/create', 'TrucksController@create');
+
+Route::post('/trucks/create', 'TrucksController@store');
