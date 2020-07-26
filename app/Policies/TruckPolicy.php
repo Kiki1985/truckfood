@@ -19,6 +19,6 @@ class TruckPolicy
      */
     public function update(User $user, Truck $truck)
     {
-        return $user->id == $truck->user_id || $user->role == "Admin";
+        return $user->id == $truck->user_id;
     }
 }
