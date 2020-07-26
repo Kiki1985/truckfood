@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Truck::class);
     }
+
+    public function addTruck($truck)
+    {
+        $this->trucks()->create($truck);
+    }
 }

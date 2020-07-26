@@ -10,6 +10,11 @@
                 <div class="card-body">
 
                    <h5 class="mb-4">Create a new truck</h5>
+                   @if(count($errors))
+                      @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                      @endforeach <br>
+                    @endif
 
                     <form method="POST" action="/trucks/create">
                     @csrf

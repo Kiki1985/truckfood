@@ -9,20 +9,25 @@ class TrucksController extends Controller
 {
     public function create()
     {
+    	abort_unless(auth()->user(), 403);
     	return view('trucks.create');
     }
 
     public function store(Request $request)
     {
-    	Truck::create([
-    	  'user_id' => auth()->user()->id,	
-          'name' => $request->name,
-          'description' => $request->description,
-          'website' => $request->website,
-          'instagram' => $request->instagram,
-          'facebook' => $request->facebook,
-          'twitter' => $request->twitter,
-    	]);
+    	auth()->user()->addTruck($this->validateTruck());
     	return redirect()->route('home');
+    }
+
+    protected function validateTruck()
+    {
+    	return request()->validate([
+            'name' => 'required|min:3|max:255',
+            'description' => 'required|min:3|max:255',
+            'website' => 'sometimes|max:25',
+            'instagram' => 'sometimes|max:25',
+            'facebook' => 'sometimes|max:25',
+            'twitter' => 'sometimes|max:25',
+        ]);
     }
 }
