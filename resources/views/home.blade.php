@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                    @foreach(auth()->user()->trucks as $truck)
+                    @foreach($trucks as $truck)
                         {{$truck->name}}
                     @endforeach
                 </div>
