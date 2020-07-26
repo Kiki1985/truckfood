@@ -24,7 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $trucks = Truck::where('user_id', auth()->id())->get();
+        if(auth()->user()->role === "Admin")
+        {
+            $trucks = Truck::all();
+        }else{
+            $trucks = Truck::where('user_id', auth()->id())->get();
+        }
+        
         return view('home', compact('trucks'));
     }
 }

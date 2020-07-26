@@ -19,9 +19,29 @@ class TrucksController extends Controller
     	return redirect()->route('home');
     }
 
+    public function edit($id)
+    {
+        $truck = Truck::find($id);
+        return view('trucks.edit', compact('truck'));
+    }
+
+    public function update($id)
+    {
+        $truck = Truck::find($id);
+        $truck->update($this->validateTruck());
+        return redirect()->route('home');
+    }
+
+    public function destroy($id)
+    {
+        $truck = Truck::find($id);
+        $truck->delete();
+        return redirect()->route('home');
+    }
+
     protected function validateTruck()
     {
-    	return request()->validate([
+        return request()->validate([
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
             'website' => 'sometimes|max:25',
