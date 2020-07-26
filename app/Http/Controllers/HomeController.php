@@ -28,7 +28,7 @@ class HomeController extends Controller
         {
             $trucks = Truck::all();
         }else{
-            $trucks = Truck::where('user_id', auth()->id())->get();
+            $trucks = auth()->user()->trucks;
         }
         
         return view('home', compact('trucks'));
