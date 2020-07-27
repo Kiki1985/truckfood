@@ -23,6 +23,14 @@ class TrucksController extends Controller
     	return redirect()->route('home');
     }
 
+    public function show(Truck $truck)
+    {
+        $trucks = Truck::all();
+        $this->authorize('update', $truck);
+        return view('home', compact('truck', 'trucks'));
+       
+    }
+
     public function edit(Truck $truck)
     {
         $this->authorize('update', $truck);
@@ -43,6 +51,22 @@ class TrucksController extends Controller
         $this->authorize('update', $truck);
         $truck->delete();
         return redirect()->route('home');
+    }
+
+    public function addlatlng(Request $request, Truck $truck)
+    {
+        $this->authorize('update', $truck);
+        $truck->update([
+            'lat' => $request->lat,
+            'lng' =>$request->lng
+        ]);
+        return redirect()->route('home');
+    }
+
+    public function getlatlng()
+    {
+       $truck = Truck::all();
+       return $truck; 
     }
 
     protected function validateTruck()
