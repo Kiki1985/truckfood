@@ -32,8 +32,8 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="town">Town</label>
-                        <input type="text" name="town" class="form-control" placeholder="Enter town" value="{{old('name')}}" required>
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{old('city')}}" required>
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>

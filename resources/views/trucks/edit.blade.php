@@ -33,8 +33,8 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="town">Town</label>
-                        <input type="text" name="town" class="form-control" placeholder="Enter town" value="{{$truck->town}}" required>
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{$truck->city}}" required>
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>

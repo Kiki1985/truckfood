@@ -17,7 +17,7 @@ class CreateTrucksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('state_id');
-            $table->string('town');
+            $table->string('city');
             $table->text('name');
             $table->text('description');
             $table->string('website')->nullable();
