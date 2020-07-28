@@ -27,3 +27,5 @@ Route::put('/trucks/{truck}/addlatlng', 'TrucksController@addlatlng');
 
 Route::get('/latlng', 'TrucksController@getlatlng');
 
+Route::get('/latlngWelcome', 'TrucksController@getlatlngWelcome');
+

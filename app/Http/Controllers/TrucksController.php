@@ -72,6 +72,12 @@ class TrucksController extends Controller
        return $trucks; 
     }
 
+    public function getlatlngWelcome()
+    {
+        $trucks = Truck::all();
+        return $trucks; 
+    }
+
     protected function validateTruck()
     {
         return request()->validate([
