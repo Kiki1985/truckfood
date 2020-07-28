@@ -20,7 +20,7 @@ Route::put('/trucks/{truck}/update', 'TrucksController@update');
 
 Route::delete('/trucks/{truck}/delete', 'TrucksController@destroy');
 
-Route::get('/trucks/{truck}/location', 'TrucksController@show');
+Route::get('/trucks/{truck}/editlocation', 'TrucksController@show');
 
 Route::put('/trucks/{truck}/addlatlng', 'TrucksController@addlatlng');
 

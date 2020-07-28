@@ -26,7 +26,7 @@
                       <div class="form-group">
                         <label for="state">State</label>
                         <select name="state_id" class="form-control">
-                          <option value="" selected disabled>Select state</option>
+                          <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
                           @foreach($states as $state)
                           <option value="{{$state->id}}">{{$state->state}}</option>
                           @endforeach
@@ -35,6 +35,14 @@
                       <div class="form-group">
                         <label for="city">City</label>
                         <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{$truck->city}}" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="lat">Lat</label>
+                        <input type="text" name="lat" class="form-control" placeholder="Latitude" value="{{$truck->lat}}" required>
+                      </div> 
+                      <div class="form-group"> 
+                        <label for="lng">Lng</label>
+                        <input type="text" name="lng" class="form-control" placeholder="Longitude" value="{{$truck->lng}}" required>
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>

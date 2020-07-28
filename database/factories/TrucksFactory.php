@@ -9,7 +9,9 @@ $factory->define(Truck::class, function (Faker $faker) {
     return [
         'user_id' => \App\User::all()->random()->id,
         'state_id' => \App\State::all()->random()->id,
-        'city' =>'Belgrade',
+        'lat' => 38.500000,
+        'lng' => -98.000000,
+        'city' =>'Kansas',
         'name' => $faker->company(),
         'description' => $faker->text(80),
     ];

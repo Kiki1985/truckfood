@@ -23,12 +23,10 @@ class TrucksController extends Controller
     	return redirect()->route('home');
     }
 
-    public function show(Truck $truck)
+    public function show(Request $request, Truck $truck)
     {
-        $trucks = Truck::all();
         $this->authorize('update', $truck);
-        return view('home', compact('truck', 'trucks'));
-       
+        return view('trucks.editlocation', compact('truck'));
     }
 
     public function edit(Truck $truck)
@@ -65,8 +63,13 @@ class TrucksController extends Controller
 
     public function getlatlng()
     {
-       $truck = Truck::all();
-       return $truck; 
+       if(auth()->user()->role === "Admin")
+        {
+            $trucks = Truck::all();
+        }else{
+            $trucks = auth()->user()->trucks;
+        }
+       return $trucks; 
     }
 
     protected function validateTruck()
@@ -76,6 +79,8 @@ class TrucksController extends Controller
             'description' => 'required|min:3|max:255',
             'state_id' =>'required',
             'city' => 'required|min:3|max:255',
+            'lat' => 'required',
+            'lng' => 'required',
             'website' => 'sometimes|max:25',
             'instagram' => 'sometimes|max:25',
             'facebook' => 'sometimes|max:25',

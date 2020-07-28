@@ -5,25 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-
-                
                 <div id="map" class="w-100" style="height: 300px"></div>
-
-                @if (\Request::is('trucks/*/location'))
-                  <label for="searchmap" class="mt-3">Search map</label>
-                  <input type="text" id="searchmap" class="form-control mb-3" placeholder="Search location">
-
-                  <form method="POST" action="/trucks/{{$truck->id}}/addlatlng">
-                    @method('PUT')
-                    @csrf
-                  <label for="searchmap">Lat</label>
-                  <input type="text" name="lat" class="form-control mb-3" placeholder="Latitude">
-                  <label for="searchmap">Lng</label>
-                  <input type="text" name="lng" class="form-control mb-3" placeholder="Longitude">
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  </form>
-
-                @endif
 
                 @if((!$trucks->isEmpty()))
                 <table class="table mb-0">
@@ -36,8 +18,8 @@
                       <th>State</th>
                       <th>City</th>
                       <th>Loaction</th>
-                      <th></th>
-                      <th></th>
+                      <th>Truck info</th>
+                      <th>Truck</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -50,7 +32,7 @@
                       <td>{{$truck->state->state}}</td>
                       <td>{{$truck->city}}</td>
 
-                      <td><a href="/trucks/{{$truck->id}}/location"><button type="submit" class="btn btn-primary btn-sm">Add</button></a></td>
+                      <td><a href="/trucks/{{$truck->id}}/editlocation"><button type="submit" class="btn btn-primary btn-sm">Edit</button></a></td>
 
                       <td><a href="/trucks/{{$truck->id}}/edit"><button type="submit" class="btn btn-primary btn-sm">Edit</button></a></td>
                       <td>
@@ -85,7 +67,6 @@
                             marker = new google.maps.Marker({
                             position: {lat: rez[i].lat, lng: rez[i].lng}, 
                             map: map,
-                            draggable: true 
                             });
                           }
                         }
