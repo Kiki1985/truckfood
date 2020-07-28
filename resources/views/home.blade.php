@@ -7,7 +7,7 @@
             <div class="card">
 
                 
-                <div id="map" class="w-100" style="height: 200px"></div>
+                <div id="map" class="w-100" style="height: 300px"></div>
 
                 @if (\Request::is('trucks/*/location'))
                   <label for="searchmap" class="mt-3">Search map</label>
@@ -69,35 +69,31 @@
 
                 <script>
                   function initMap() {
-
-                    let location = {lat: 44.786568, lng: 20.448921};
-
+                    let location = {lat: 38.500000, lng: -98.000000};
                     let map = new google.maps.Map(document.getElementById("map"), {
-                      zoom: 4,
+                      zoom: 3.9,
                       center: location
                     });
-
                     var xhr = new XMLHttpRequest();
                     xhr.open('GET', 'latlng', true); 
                     xhr.send(null);
                     xhr.onreadystatechange = function(){
-                        if(xhr.readyState === 4){
-                          let rez = JSON.parse(xhr.responseText);
-                          console.log(rez);
-                            for( let i in rez){
-                              marker = new google.maps.Marker({
-                              position: {lat: rez[i].lat, lng: rez[i].lng}, 
-                              map: map,
-                              draggable: true 
-                              });
-                            }
+                      if(xhr.readyState === 4){
+                        let rez = JSON.parse(xhr.responseText);
+                        for( let i in rez){
+                          if(rez[i].lat !== null) {
+                            marker = new google.maps.Marker({
+                            position: {lat: rez[i].lat, lng: rez[i].lng}, 
+                            map: map,
+                            draggable: true 
+                            });
+                          }
                         }
+                      }
                     }
-                  
                   }
 
                 </script>
-                {{--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8&callback=initMap"></script>--}}
             </div>
             
         </div>
