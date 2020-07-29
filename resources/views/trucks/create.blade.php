@@ -35,14 +35,6 @@
                         <label for="city">City</label>
                         <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{old('city')}}" required>
                       </div>
-                      <!--<div class="form-group">
-                        <label for="lat">Lat</label>
-                        <input type="text" name="lat" class="form-control" placeholder="Latitude" required>
-                      </div> 
-                      <div class="form-group"> 
-                        <label for="lng">Lng</label>
-                        <input type="text" name="lng" class="form-control" placeholder="Longitude" required>
-                      </div>-->
                       <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" class="form-control" rows="3" required></textarea>

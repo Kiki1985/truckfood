@@ -9,18 +9,19 @@
                   <form method="POST" action="/trucks/{{$truck->id}}/addlatlng">
                     @method('PUT')
                     @csrf
-                  <div class="form-group"> 
-                    <label for="searchmap" class="mt-3">Search map</label>
-                    <input type="text" id="searchmap" class="form-control mb-3" placeholder="Search location">
-                  </div> 
-                  <div class="form-group"> 
-                    <label for="lat">Lat</label>
-                    <input type="text" name="lat" class="form-control mb-3" placeholder="Latitude" value="{{$truck->lat}}">
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <select name="state_id" class="form-control">
+                      <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
+                      @foreach($states as $state)
+                      <option value="{{$state->id}}">{{$state->state}}</option>
+                      @endforeach
+                     </select>
                   </div>
-                  <div class="form-group"> 
-                    <label for="lng">Lng</label>
-                    <input type="text" name="lng" class="form-control mb-3" placeholder="Longitude" value="{{$truck->lng}}">
-                  </div>
+                  <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{$truck->city}}" required>
+                      </div>
                   <button type="submit" class="btn btn-primary">Save</button>
                   </form>
 

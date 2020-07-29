@@ -25,8 +25,9 @@ class TrucksController extends Controller
 
     public function show(Request $request, Truck $truck)
     {
+        $states = State::all();
         $this->authorize('update', $truck);
-        return view('trucks.editlocation', compact('truck'));
+        return view('trucks.editlocation', compact('truck', 'states'));
     }
 
     public function edit(Truck $truck)
@@ -41,6 +42,19 @@ class TrucksController extends Controller
     {
         $this->authorize('update', $truck);
         $truck->update($this->validateTruck());
+
+        $states = new State();
+        $states = $states->statesList();
+        $state = \App\State::where('id', $truck['state_id'])->get();
+        $state = $state[0]['state'];
+
+        $lat = $states[$state][0];
+        $lng = $states[$state][1];
+
+        $truck->update([
+            'lat' => $lat,
+            'lng' =>$lng
+        ]);
         return redirect()->route('home');
     }
 
@@ -54,9 +68,19 @@ class TrucksController extends Controller
     public function addlatlng(Request $request, Truck $truck)
     {
         $this->authorize('update', $truck);
+        $states = new State();
+        $states = $states->statesList();
+        $state = \App\State::where('id', $request['state_id'])->get();
+        $state = $state[0]['state'];
+
+        $lat = $states[$state][0];
+        $lng = $states[$state][1];
+
         $truck->update([
-            'lat' => $request->lat,
-            'lng' =>$request->lng
+            'state_id' => $request['state_id'],
+            'city' => $request['city'],
+            'lat' => $lat,
+            'lng' =>$lng
         ]);
         return redirect()->route('home');
     }

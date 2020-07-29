@@ -37,14 +37,6 @@
                         <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{$truck->city}}" required>
                       </div>
                       <div class="form-group">
-                        <label for="lat">Lat</label>
-                        <input type="text" name="lat" class="form-control" placeholder="Latitude" value="{{$truck->lat}}" required>
-                      </div> 
-                      <div class="form-group"> 
-                        <label for="lng">Lng</label>
-                        <input type="text" name="lng" class="form-control" placeholder="Longitude" value="{{$truck->lng}}" required>
-                      </div>
-                      <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" class="form-control" rows="3" required>{{$truck->description}}</textarea>
                       </div>

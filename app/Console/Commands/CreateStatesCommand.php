@@ -38,22 +38,12 @@ class CreateStatesCommand extends Command
      */
     public function handle()
     {
-        /*$states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina','South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];*/
         $states = new State();
         $states = $states->statesList();
-        //dd($states);
-
-        /*foreach ($states as $state) {
-            
-            State::create([
-                'state' => $state
-            ]);
-
-        }*/
         foreach($states as $key => $value)
         {
-           $state = $key;
-           State::create([
+            $state = $key;
+            State::create([
                 'state' => $state
             ]);
         }
