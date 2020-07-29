@@ -6,17 +6,6 @@ use App\Truck;
 use Faker\Generator as Faker;
 
 $factory->define(Truck::class, function (Faker $faker) {
-	//$id = rand(0, 4);
-	/*$states = [ [0, 00.00, 00.00],
-	            [1, 32.318230, -86.902298],
-	            [2, 66.160507, -153.369141],
-	            [3, 34.048927, -111.093735],
-	            [4, 34.799999, -92.199997],
-	            [5, 36.778259, -119.417931],
-	            [6, 39.113014, -105.358887],
-
-	          ];*/
-	//$city = \App\State::where('id', $states[$id][0])->get();
     $states = [
                'Alabama' => [32.318230, -86.902298],
                'Alaska' => [66.160507, -153.369141],

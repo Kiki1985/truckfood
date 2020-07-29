@@ -85,8 +85,6 @@ class TrucksController extends Controller
             'description' => 'required|min:3|max:255',
             'state_id' =>'required',
             'city' => 'required|min:3|max:255',
-            'lat' => 'required',
-            'lng' => 'required',
             'website' => 'sometimes|max:25',
             'instagram' => 'sometimes|max:25',
             'facebook' => 'sometimes|max:25',
