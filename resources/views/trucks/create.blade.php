@@ -10,34 +10,43 @@
                 <div class="card-body">
 
                    <h5 class="mb-4">Create a new truck</h5>
-                   @if(count($errors))
-                      @foreach($errors->all() as $error)
-                        <p>{{$error}}</p>
-                      @endforeach <br>
-                    @endif
 
                     <form method="POST" action="/trucks/create">
                     @csrf
-                      <div class="form-group">
+                       
+                      <div class="form-group has-error">
                         <label for="truckName">Truck name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter truck name" value="{{old('name')}}" required>
+                        <input type="text" name="name" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" placeholder="Enter truck name" value="{{old('name')}}" required>
+                        @if($errors->has('name'))
+                        <p class="text-danger">{{$errors->first('name')}}</p>
+                        @endif
                       </div>
                       <div class="form-group">
                         <label for="state">State</label>
                         <select name="state_id" class="form-control">
+                        @if(count($errors))
+                        <option value="{{old('state_id')}}" selected>{{$states->find(old('state_id'))->state}}</option>
+                        @else
                           <option value="" selected disabled>Select state</option>
+                        @endif
                           @foreach($states as $state)
-                          <option value="{{$state->id}}">{{$state->state}}</option>
+                          <option name="option_id" value="{{$state->id}}">{{$state->state}}</option>
                           @endforeach
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{old('city')}}" required>
+                        <input type="text" name="city" class="form-control {{$errors->has('city') ? 'is-invalid' : ''}}" placeholder="Enter city" value="{{old('city')}}" required>
+                        @if($errors->has('city'))
+                        <p class="text-danger">{{$errors->first('city')}}</p>
+                        @endif
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" class="form-control" rows="3" required></textarea>
+                        <textarea name="description" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" rows="3">{{old('description')}}</textarea>
+                        @if($errors->has('description'))
+                        <p class="text-danger">{{$errors->first('description')}}</p>
+                        @endif
                       </div>
                       <div class="form-group">
                         <label for="website">Website</label>
