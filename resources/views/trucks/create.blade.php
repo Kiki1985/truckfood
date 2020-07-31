@@ -9,14 +9,23 @@
 
                 <div class="card-body">
 
-                   <h5 class="mb-4">Create a new truck</h5>
+                  @if(\Request::is('trucks/create'))
 
-                    <form method="POST" action="/trucks/create">
+                   <h5 class="mb-4">Create a new truck</h5>
+                   <form method="POST" action="/trucks/create">
                     @csrf
+                  @else
+                    <h5 class="mb-4">Edit a truck info</h5>
+                    <form method="POST" action="/trucks/{{$truck->id}}/update">
+                    @method('PUT')
+                    @csrf
+                
+                  @endif
+                    
                        
                       <div class="form-group has-error">
                         <label for="truckName">Truck name</label>
-                        <input type="text" name="name" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" placeholder="Enter truck name" value="{{old('name')}}" required>
+                        <input type="text" name="name" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" placeholder="Enter truck name" value="{{ \Request::is('trucks/create') ? old('name') : $truck->name }}" required>
                         @if($errors->has('name'))
                         <p class="text-danger">{{$errors->first('name')}}</p>
                         @endif
@@ -24,8 +33,12 @@
                       <div class="form-group">
                         <label for="state">State</label>
                         <select name="state_id" class="form-control">
+                        
                         @if(count($errors))
                         <option value="{{old('state_id')}}" selected>{{$states->find(old('state_id'))->state}}</option>
+                        @endif
+                        @if(!\Request::is('trucks/create'))
+                        <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
                         @else
                           <option value="" selected disabled>Select state</option>
                         @endif
@@ -36,7 +49,7 @@
                       </div>
                       <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" name="city" class="form-control {{$errors->has('city') ? 'is-invalid' : ''}}" placeholder="Enter city" value="{{old('city')}}" required>
+                        <input type="text" name="city" class="form-control {{$errors->has('city') ? 'is-invalid' : ''}}" placeholder="Enter city" value="{{ \Request::is('trucks/create') ? old('city') : $truck->city }}" required>
                         @if($errors->has('city'))
                         <p class="text-danger">{{$errors->first('city')}}</p>
                         @endif

@@ -34,7 +34,7 @@ class TrucksController extends Controller
     {
         $this->authorize('update', $truck);
         $states = State::all();
-        return view('trucks.edit', compact('truck', 'states'));
+        return view('trucks.create', compact('truck', 'states'));
        
     }
 
