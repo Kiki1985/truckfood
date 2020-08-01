@@ -60,9 +60,7 @@ class TrucksController extends Controller
 
         $truck->update([
             'state_id' => $request['state_id'],
-            'city' => $request['city'],
-            'lat' => $lat,
-            'lng' =>$lng
+            'city' => $request['city']
         ]);
         $truck->updateCoordinates($request->state_id);
         return redirect()->route('home');
