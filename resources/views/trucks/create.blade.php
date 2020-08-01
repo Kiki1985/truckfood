@@ -5,53 +5,70 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Truck</div>
-          <div class="card-body">
-          @if(\Request::is('trucks/create'))
-            <h5 class="mb-4">Create a new truck</h5>
-            <form method="POST" action="/trucks/create">
-            @csrf
-          @else
-            <h5 class="mb-4">Edit a truck info</h5>
-            <form method="POST" action="/trucks/{{$truck->id}}/update">
-            @method('PUT')
-            @csrf
-          @endif
+        <div class="card-body">
+        @if(\Request::is('trucks/create'))
+          <h5 class="mb-4">Create a new truck</h5>
+          <form method="POST" action="/trucks/create">
+          @csrf
+        @else
+          <h5 class="mb-4">Edit a truck info</h5>
+          <form method="POST" action="/trucks/{{$truck->id}}/update">
+          @method('PUT')
+          @csrf
+        @endif
             <div class="form-group has-error">
               <label for="truckName">Truck name</label>
-              <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter truck name" value="{{ \Request::is('trucks/create') ? old('name') : $truck->name }}" required>
+              <input 
+                type="text" 
+                name="name" 
+                class="form-control @error('name') is-invalid @enderror" 
+                placeholder="Enter truck name" 
+                value="{{ \Request::is('trucks/create') ? old('name') : $truck->name }}" 
+                required>
               @error('name')
-              <p class="text-danger">{{$errors->first('name')}}</p>
+                <p class="text-danger">{{$errors->first('name')}}</p>
               @enderror
             </div>
             <div class="form-group">
               <label for="state">State</label>
               <select name="state_id" class="form-control" required>
-                @if(!\Request::is('trucks/create'))
+              @if(!\Request::is('trucks/create'))
                 <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
-                @else
+              @else
                 <option value="" selected disabled>Select state</option>
-                @endif
-                @foreach($states as $state)
+              @endif
+              @foreach($states as $state)
                 <option name="option_id" value="{{$state->id}}">{{$state->state}}</option>
                 @if($errors->all())
-                <option value="{{old('state_id')}}" selected>{{$states->find(old('state_id'))->state}}</option>
+                  <option value="{{old('state_id')}}" selected>
+                    {{$states->find(old('state_id'))->state}}
+                  </option>
                 @endif
-                @endforeach
+              @endforeach
               </select>
             </div>
             <div class="form-group">
               <label for="city">City</label>
-              <input type="text" name="city" class="form-control @error('city') is-invalid @enderror" placeholder="Enter city" value="{{ \Request::is('trucks/create') ? old('city') : $truck->city }}" required>
+              <input 
+                type="text" 
+                name="city" 
+                class="form-control @error('city') is-invalid @enderror" 
+                placeholder="Enter city" 
+                value="{{ \Request::is('trucks/create') ? old('city') : $truck->city }}" 
+                required>
               @error('city')
-              <p class="text-danger">{{$errors->first('city')}}</p>
+                <p class="text-danger">{{$errors->first('city')}}</p>
               @enderror
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="3" required>{{\Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
+              <textarea 
+                name="description" 
+                class="form-control @error('description') is-invalid @enderror" 
+                rows="3" 
+                required>{{\Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
               @error('description')
-              <p class="text-danger">{{$errors->first('description')}}</p>
+                <p class="text-danger">{{$errors->first('description')}}</p>
               @enderror
             </div>
             <div class="form-group">
