@@ -66,7 +66,8 @@
                 name="description" 
                 class="form-control @error('description') is-invalid @enderror" 
                 rows="3" 
-                required>{{\Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
+                required
+              >{{ \Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
               @error('description')
                 <p class="text-danger">{{$errors->first('description')}}</p>
               @enderror
