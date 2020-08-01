@@ -32,19 +32,20 @@
                       </div>
                       <div class="form-group">
                         <label for="state">State</label>
-                        <select name="state_id" class="form-control">
+                        <select name="state_id" class="form-control" required>
                         
-                        @if(count($errors))
-                        <option value="{{old('state_id')}}" selected>{{$states->find(old('state_id'))->state}}</option>
-                        @endif
+                        
                         @if(!\Request::is('trucks/create'))
                         <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
                         @else
-                          <option value="" selected disabled>Select state</option>
+                          <option value="{{old('state_id')}}" selected disabled>Select state</option>
                         @endif
                           @foreach($states as $state)
                           <option name="option_id" value="{{$state->id}}">{{$state->state}}</option>
                           @endforeach
+                          @if($errors->all())
+                        <option value="{{old('state_id')}}" selected>{{$states->find(old('state_id'))->state}}</option>
+                        @endif
                         </select>
                       </div>
                       <div class="form-group">
@@ -56,7 +57,7 @@
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" rows="3">{{old('description')}}</textarea>
+                        <textarea name="description" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" rows="3" required>{{old('description')}}</textarea>
                         @if($errors->has('description'))
                         <p class="text-danger">{{$errors->first('description')}}</p>
                         @endif
