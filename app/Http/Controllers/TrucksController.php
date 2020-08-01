@@ -19,7 +19,8 @@ class TrucksController extends Controller
     public function store(Request $request)
     {
         abort_unless(auth()->user(), 403);
-    	auth()->user()->addTruck($this->validateTruck());
+    	$truck = auth()->user()->addTruck($this->validateTruck());
+        $truck->updateCoordinates($request->state_id);
     	return redirect()->route('home');
     }
 
@@ -42,19 +43,7 @@ class TrucksController extends Controller
     {
         $this->authorize('update', $truck);
         $truck->update($this->validateTruck());
-
-        $states = new State();
-        $states = $states->statesList();
-        $state = \App\State::where('id', $truck['state_id'])->get();
-        $state = $state[0]['state'];
-
-        $lat = $states[$state][0];
-        $lng = $states[$state][1];
-
-        $truck->update([
-            'lat' => $lat,
-            'lng' =>$lng
-        ]);
+        $truck->updateCoordinates($truck->state_id);
         return redirect()->route('home');
     }
 
@@ -68,13 +57,6 @@ class TrucksController extends Controller
     public function addlatlng(Request $request, Truck $truck)
     {
         $this->authorize('update', $truck);
-        $states = new State();
-        $states = $states->statesList();
-        $state = \App\State::where('id', $request['state_id'])->get();
-        $state = $state[0]['state'];
-
-        $lat = $states[$state][0];
-        $lng = $states[$state][1];
 
         $truck->update([
             'state_id' => $request['state_id'],
@@ -82,6 +64,7 @@ class TrucksController extends Controller
             'lat' => $lat,
             'lng' =>$lng
         ]);
+        $truck->updateCoordinates($request->state_id);
         return redirect()->route('home');
     }
 

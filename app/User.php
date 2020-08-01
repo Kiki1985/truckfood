@@ -45,18 +45,7 @@ class User extends Authenticatable
     public function addTruck($truck)
     {
         $newTruck = $this->trucks()->create($truck);
-        
-        $states = new State();
-        $states = $states->statesList();
-        $state = \App\State::where('id', $truck['state_id'])->get();
-        $state = $state[0]['state'];
 
-        $lat = $states[$state][0];
-        $lng = $states[$state][1];
-
-        $newTruck->update([
-            'lat' => $lat,
-            'lng' =>$lng
-        ]);
+        return $newTruck;
     }
 }

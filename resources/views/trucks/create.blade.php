@@ -33,12 +33,17 @@
               <label for="state">State</label>
               <select name="state_id" class="form-control" required>
               @if(!\Request::is('trucks/create'))
-                <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
+                <option 
+                  value="{{$truck->state->id}}">
+                    {{$truck->state->state}}
+                </option>
               @else
                 <option value="" selected disabled>Select state</option>
               @endif
               @foreach($states as $state)
-                <option name="option_id" value="{{$state->id}}">{{$state->state}}</option>
+                <option name="option_id" value="{{$state->id}}">
+                  {{$state->state}}
+                </option>
                 @if($errors->all())
                   <option value="{{old('state_id')}}" selected>
                     {{$states->find(old('state_id'))->state}}
