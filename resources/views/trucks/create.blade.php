@@ -20,9 +20,9 @@
             <div class="form-group has-error">
               <label for="truckName">Truck name</label>
               <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter truck name" value="{{ \Request::is('trucks/create') ? old('name') : $truck->name }}" required>
-              @if($errors->has('name'))
+              @error('name')
               <p class="text-danger">{{$errors->first('name')}}</p>
-              @endif
+              @enderror
             </div>
             <div class="form-group">
               <label for="state">State</label>
@@ -43,16 +43,16 @@
             <div class="form-group">
               <label for="city">City</label>
               <input type="text" name="city" class="form-control @error('city') is-invalid @enderror" placeholder="Enter city" value="{{ \Request::is('trucks/create') ? old('city') : $truck->city }}" required>
-              @if($errors->has('city'))
+              @error('city')
               <p class="text-danger">{{$errors->first('city')}}</p>
-              @endif
+              @enderror
             </div>
             <div class="form-group">
               <label for="description">Description</label>
               <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="3" required>{{\Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
-              @if($errors->has('description'))
+              @error('description')
               <p class="text-danger">{{$errors->first('description')}}</p>
-              @endif
+              @enderror
             </div>
             <div class="form-group">
               <label for="website">Website</label>
