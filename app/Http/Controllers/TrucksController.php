@@ -57,15 +57,11 @@ class TrucksController extends Controller
     public function addlatlng(Request $request, Truck $truck)
     {
         $this->authorize('update', $truck);
-        request()->validate([
+        $validatedAtributes = request()->validate([
             'state_id' =>'required',
             'city' => 'required|min:3|max:255'
         ]);
-
-        $truck->update([
-            'state_id' => $request['state_id'],
-            'city' => $request['city']
-        ]);
+        $truck->update($validatedAtributes);
         $truck->updateCoordinates($request->state_id);
         return redirect()->route('home');
     }
