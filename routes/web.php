@@ -22,7 +22,7 @@ Route::delete('/trucks/{truck}/delete', 'TrucksController@destroy');
 
 Route::get('/trucks/{truck}/editlocation', 'TrucksController@show');
 
-Route::put('/trucks/{truck}/addlatlng', 'TrucksController@addlatlng');
+Route::put('/trucks/{truck}/updatelocation', 'TrucksController@updatelocation');
 
 
 Route::get('/latlng', 'TrucksController@getlatlng');

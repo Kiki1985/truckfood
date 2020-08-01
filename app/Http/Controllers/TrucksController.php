@@ -54,7 +54,7 @@ class TrucksController extends Controller
         return redirect()->route('home');
     }
 
-    public function addlatlng(Request $request, Truck $truck)
+    public function updateLocation(Request $request, Truck $truck)
     {
         $this->authorize('update', $truck);
         $truck->update(request()->validate([

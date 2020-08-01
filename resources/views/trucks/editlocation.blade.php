@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div id="map" class="w-100" style="height: 300px"></div>
-                  <form method="POST" action="/trucks/{{$truck->id}}/addlatlng">
+                  <form method="POST" action="/trucks/{{$truck->id}}/updatelocation">
                     @method('PUT')
                     @csrf
                   <div class="form-group">
