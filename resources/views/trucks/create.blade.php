@@ -42,10 +42,10 @@
                         @endif
                           @foreach($states as $state)
                           <option name="option_id" value="{{$state->id}}">{{$state->state}}</option>
-                          @endforeach
                           @if($errors->all())
                         <option value="{{old('state_id')}}" selected>{{$states->find(old('state_id'))->state}}</option>
                         @endif
+                          @endforeach
                         </select>
                       </div>
                       <div class="form-group">
@@ -57,7 +57,7 @@
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" rows="3" required>{{old('description')}}</textarea>
+    <textarea name="description" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" rows="3" required>{{\Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
                         @if($errors->has('description'))
                         <p class="text-danger">{{$errors->first('description')}}</p>
                         @endif
