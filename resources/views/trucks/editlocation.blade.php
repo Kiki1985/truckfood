@@ -22,7 +22,7 @@
                       <label for="city">City</label>
                       <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{$truck->city}}" required>
                       @error('city')
-                        <p class="text-danger">{{$errors->first('city')}}</p>
+                        <p class="text-danger">{{$message}}</p>
                       @enderror
                   </div>
                   <button type="submit" class="btn btn-primary">Save</button>

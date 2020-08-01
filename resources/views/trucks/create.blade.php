@@ -26,7 +26,7 @@
                 value="{{ \Request::is('trucks/create') ? old('name') : $truck->name }}" 
                 required>
               @error('name')
-                <p class="text-danger">{{$errors->first('name')}}</p>
+                <p class="text-danger">{{$message}}</p>
               @enderror
             </div>
             <div class="form-group">
@@ -62,7 +62,7 @@
                 value="{{ \Request::is('trucks/create') ? old('city') : $truck->city }}" 
                 required>
               @error('city')
-                <p class="text-danger">{{$errors->first('city')}}</p>
+                <p class="text-danger">{{$message}}</p>
               @enderror
             </div>
             <div class="form-group">
@@ -74,7 +74,7 @@
                 required
               >{{ \Request::is('trucks/create') ? old('description') : $truck->description }}</textarea>
               @error('description')
-                <p class="text-danger">{{$errors->first('description')}}</p>
+                <p class="text-danger">{{$message}}</p>
               @enderror
             </div>
             <div class="form-group">

@@ -27,6 +27,11 @@ class CreateTrucksTable extends Migration
             $table->float('lat')->nullable();
             $table->float('lng')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
         });
     }
 
