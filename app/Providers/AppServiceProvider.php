@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer("home", function ($view) {
+            $trucks = \App\Truck::all();
+            $view->with(compact("trucks"));
+        });
     }
 }
