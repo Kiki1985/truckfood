@@ -7,7 +7,7 @@
             <div class="card">
                 <div id="map" class="w-100" style="height: 300px"></div>
 
-                
+                @if(auth()->user())
                 @if(\Request::is('trucks') && count(auth()->user()->trucks) || (auth()->user()->role == 'Admin' && count($trucks)) )
                 <table class="table mb-0">
                   <thead>
@@ -49,6 +49,7 @@
                      @endforeach
                   </tbody>
                 </table>
+                @endif
                 @endif
                
 
