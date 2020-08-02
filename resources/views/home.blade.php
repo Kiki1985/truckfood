@@ -7,7 +7,8 @@
             <div class="card">
                 <div id="map" class="w-100" style="height: 300px"></div>
 
-                @if((!$trucks->isEmpty()))
+                
+                @if( count(auth()->user()->trucks) || (auth()->user()->role == 'Admin' && count($trucks)) )
                 <table class="table mb-0">
                   <thead>
                    <tr>
@@ -24,6 +25,7 @@
                   </thead>
                   <tbody>
                     @foreach($trucks as $truck)
+                    @can('update', $truck)
                     <tr>
                       <td>{{$truck->name}}</td>
                       @if(auth()->user()->role === "Admin")
@@ -43,11 +45,12 @@
                       </form>
                       </td>
                       </tr>
+                      @endcan
                      @endforeach
                   </tbody>
                 </table>
                 @endif
-                
+               
 
                 <script>
                   function initMap() {

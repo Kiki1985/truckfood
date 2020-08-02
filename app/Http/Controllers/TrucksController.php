@@ -57,6 +57,7 @@ class TrucksController extends Controller
     public function updateLocation(Request $request, Truck $truck)
     {
         $this->authorize('update', $truck);
+
         $truck->update(request()->validate([
             'state_id' =>'required',
             'city' => 'required|min:3|max:255'

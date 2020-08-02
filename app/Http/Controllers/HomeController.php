@@ -24,12 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->role === "Admin")
-        {
-            $trucks = Truck::all();
-        }else{
-            $trucks = auth()->user()->trucks;
-        }
+        $trucks = Truck::all();
         
         return view('home', compact('trucks'));
     }
