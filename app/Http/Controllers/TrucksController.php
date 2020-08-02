@@ -11,9 +11,7 @@ class TrucksController extends Controller
     public function create()
     {
     	abort_unless(auth()->user(), 403);
-        return view('trucks.create', [
-            'states' => State::all()
-        ]);
+        return view('trucks.create');
     }
 
     public function store(Request $request)
@@ -26,16 +24,16 @@ class TrucksController extends Controller
 
     public function show(Request $request, Truck $truck)
     {
-        $states = State::all();
+        //$states = State::all();
         $this->authorize('update', $truck);
-        return view('trucks.editlocation', compact('truck', 'states'));
+        return view('trucks.editlocation', compact('truck'));
     }
 
     public function edit(Truck $truck)
     {
         $this->authorize('update', $truck);
-        $states = State::all();
-        return view('trucks.create', compact('truck', 'states'));
+        //$states = State::all();
+        return view('trucks.create', compact('truck'));
        
     }
 
@@ -69,8 +67,7 @@ class TrucksController extends Controller
     public function getlocations()
     {
         $trucks = Truck::all();
-        if(auth()->user() && auth()->user()->role === "Owner")
-        {
+        if(auth()->user() && auth()->user()->role === "Owner"){
             $trucks = auth()->user()->trucks;   
         }
         
