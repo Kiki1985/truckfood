@@ -45,7 +45,6 @@ class User extends Authenticatable
     public function addTruck($truck)
     {
         $newTruck = $this->trucks()->create($truck);
-
-        return $newTruck;
+        $newTruck->updateCoordinates($truck['state_id']);
     }
 }

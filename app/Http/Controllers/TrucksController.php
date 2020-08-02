@@ -17,8 +17,7 @@ class TrucksController extends Controller
     public function store(Request $request)
     {
         abort_unless(auth()->user(), 403);
-    	$truck = auth()->user()->addTruck($this->validateTruck());
-        $truck->updateCoordinates($request->state_id);
+    	auth()->user()->addTruck($this->validateTruck());
     	return redirect()->route('home');
     }
 
@@ -53,7 +52,6 @@ class TrucksController extends Controller
     public function updateLocation(Request $request, Truck $truck)
     {
         $this->authorize('update', $truck);
-
         $truck->update(request()->validate([
             'state_id' =>'required',
             'city' => 'required|min:3|max:255'
