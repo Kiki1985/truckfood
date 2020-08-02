@@ -24,7 +24,6 @@ class TrucksController extends Controller
 
     public function show(Request $request, Truck $truck)
     {
-        //$states = State::all();
         $this->authorize('update', $truck);
         return view('trucks.editlocation', compact('truck'));
     }
@@ -32,7 +31,6 @@ class TrucksController extends Controller
     public function edit(Truck $truck)
     {
         $this->authorize('update', $truck);
-        //$states = State::all();
         return view('trucks.create', compact('truck'));
        
     }
