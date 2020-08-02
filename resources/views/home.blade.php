@@ -61,7 +61,7 @@
                       center: location
                     });
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', 'latlng', true); 
+                    xhr.open('GET', 'getlocations', true); 
                     xhr.send(null);
                     xhr.onreadystatechange = function(){
                       if(xhr.readyState === 4){

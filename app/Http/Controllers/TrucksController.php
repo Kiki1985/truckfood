@@ -66,20 +66,14 @@ class TrucksController extends Controller
         return redirect()->route('home');
     }
 
-    public function getlatlng()
-    {
-       if(auth()->user()->role === "Admin")
-        {
-            $trucks = Truck::all();
-        }else{
-            $trucks = auth()->user()->trucks;
-        }
-       return $trucks; 
-    }
-
-    public function getlatlngWelcome()
+    public function getlocations()
     {
         $trucks = Truck::all();
+        if(auth()->user() && auth()->user()->role === "Owner")
+        {
+            $trucks = auth()->user()->trucks;   
+        }
+        
         return $trucks; 
     }
 

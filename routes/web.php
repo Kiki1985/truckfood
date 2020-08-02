@@ -23,7 +23,5 @@ Route::get('/trucks/{truck}/editlocation', 'TrucksController@show');
 Route::put('/trucks/{truck}/updatelocation', 'TrucksController@updatelocation');
 
 
-Route::get('/latlng', 'TrucksController@getlatlng');
-
-Route::get('/latlngWelcome', 'TrucksController@getlatlngWelcome');
+Route::get('/getlocations', 'TrucksController@getlocations');
 
