@@ -8,6 +8,10 @@ use App\State;
 
 class TrucksController extends Controller
 {
+    public function index()
+    {
+        return view('trucks.trucks');
+    }
     public function create()
     {
     	abort_unless(auth()->user(), 403);

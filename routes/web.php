@@ -6,7 +6,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/trucks', 'HomeController@index')->name('home');
+Route::get('/trucks', 'TrucksController@index')->name('home')->middleware('auth');
 
 Route::get('/trucks/create', 'TrucksController@create');
 
