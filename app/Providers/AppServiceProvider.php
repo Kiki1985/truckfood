@@ -28,12 +28,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact("trucks"));
         });
 
-        view()->composer("trucks.create", function ($view) {
-            $states = \App\State::all();
-            $view->with(compact("states"));
-        });
-
-        view()->composer("trucks.editlocation", function ($view) {
+        view()->composer("trucks.states", function ($view) {
             $states = \App\State::all();
             $view->with(compact("states"));
         });

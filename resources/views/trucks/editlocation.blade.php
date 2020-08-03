@@ -9,23 +9,8 @@
                   <form method="POST" action="/trucks/{{$truck->id}}/updatelocation">
                     @method('PUT')
                     @csrf
-                  <div class="form-group">
-                    <label for="state">State</label>
-                    <select name="state_id" class="form-control">
-                      <option value="{{$truck->state->id}}">{{$truck->state->state}}</option>
-                      @foreach($states as $state)
-                      <option value="{{$state->id}}">{{$state->state}}</option>
-                      @endforeach
-                     </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="city">City</label>
-                      <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{$truck->city}}" required>
-                      @error('city')
-                        <p class="text-danger">{{$message}}</p>
-                      @enderror
-                  </div>
-                  <button type="submit" class="btn btn-primary">Save</button>
+                    @include('trucks.states')
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
 
                 <script>
