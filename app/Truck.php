@@ -19,7 +19,8 @@ class Truck extends Model
         return $this->belongsTo(State::class);
     }
 
-    public function updateCoordinates($stateId) {
+    public function updateCoordinates($stateId)
+    {
         $states = new State();
         $state = $states->find($stateId)->state;
         $states = $states->statesList();
@@ -31,5 +32,14 @@ class Truck extends Model
             'lat' => $lat,
             'lng' =>$lng
         ]);
+    }
+
+    public static function loadlocations()
+    {
+        $trucks = Truck::all();
+        if(auth()->user() && auth()->user()->role === "Owner"){
+            $trucks = auth()->user()->trucks;
+        }
+        return $trucks;
     }
 }

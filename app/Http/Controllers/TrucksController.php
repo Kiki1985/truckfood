@@ -66,10 +66,7 @@ class TrucksController extends Controller
 
     public function getlocations()
     {
-        $trucks = Truck::all();
-        if(auth()->user() && auth()->user()->role === "Owner"){
-            $trucks = auth()->user()->trucks;   
-        }
+        $trucks = Truck::loadlocations();
         return $trucks; 
     }
 
