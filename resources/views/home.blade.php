@@ -12,6 +12,7 @@
     </div>
 </div>
 
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8&callback=initMap&libraries=places"></script>
 <script>
   function initMap() {
     let location = {lat: 38.500000, lng: -98.000000};
