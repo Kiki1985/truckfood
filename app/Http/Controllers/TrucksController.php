@@ -66,7 +66,6 @@ class TrucksController extends Controller
         if(auth()->user() && auth()->user()->role === "Owner"){
             $trucks = auth()->user()->trucks;   
         }
-        
         return $trucks; 
     }
 
