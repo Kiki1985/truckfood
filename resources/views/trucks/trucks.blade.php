@@ -27,14 +27,14 @@
     <td>{{$truck->state->state}}</td>
     <td>{{$truck->city}}</td>
     <td>
-      <a href="/trucks/{{$truck->slug}}/editlocation">
+      <a href="{{ route('location.edit', $truck) }}">
         <button type="submit" class="btn btn-primary btn-sm">
           Edit
         </button>
       </a>
     </td>
     <td>
-      <a href="/trucks/{{$truck->slug}}/edit">
+      <a href="{{ route('trucks.edit', $truck) }}">
         <button type="submit" class="btn btn-primary btn-sm">
           Edit
         </button>
