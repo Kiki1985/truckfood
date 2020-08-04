@@ -15,13 +15,17 @@ $factory->define(Truck::class, function (Faker $faker) {
 
 	$state_id = $state[0]->id;
 
+    $name = $faker->company();
+    $name = substr($name, 0, 15);
+
     return [
         'user_id' => \App\User::all()->random()->id,
         'state_id' => $state_id,
         'lat' => $states[$randomState][0],
         'lng' => $states[$randomState][1],
         'city' => $faker->city,
-        'name' => $faker->company(),
+        'name' => $name,
+        'slug' => str_replace(' ', '', $name),
         'description' => $faker->text(80),
     ];
 });

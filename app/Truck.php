@@ -42,4 +42,9 @@ class Truck extends Model
         }
         return $trucks;
     }
+
+    /*public function path()
+    {
+        return route('editTruck', (str_replace(' ', '_', $this->name)));
+    }*/
 }

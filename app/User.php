@@ -46,5 +46,8 @@ class User extends Authenticatable
     {
         $newTruck = $this->trucks()->create($truck);
         $newTruck->updateCoordinates($truck['state_id']);
+        $newTruck->update([
+            'slug' => str_replace(' ', '', $truck['name'])
+        ]);
     }
 }

@@ -42,6 +42,9 @@ class TrucksController extends Controller
     {
         $this->authorize('update', $truck);
         $truck->update($this->validateTruck());
+        $truck->update([
+            'slug' => str_replace(' ', '', $truck->name)
+        ]);
         $truck->updateCoordinates($truck->state_id);
         return redirect()->route('home');
     }
