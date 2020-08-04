@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Truck;
-use App\State;
 
 class TrucksController extends Controller
 {
