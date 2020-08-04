@@ -34,6 +34,15 @@ class Truck extends Model
         ]);
     }
 
+    public function updateTruck($truck)
+    {
+        Truck::update($truck);
+        Truck::update([
+            'slug' => str_replace(' ', '', $truck['name'])
+        ]);
+        Truck::updateCoordinates($truck['state_id']);
+    }
+
     public static function loadlocations()
     {
         $trucks = Truck::all();
