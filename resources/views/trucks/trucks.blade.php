@@ -2,6 +2,7 @@
 
 @section('content-home')
 @if(count(auth()->user()->trucks) || (auth()->user()->role == 'Admin' && count($trucks)) )
+
 <table class="table mb-0">
   <thead>
     <tr>
@@ -54,6 +55,39 @@
   @endforeach
   </tbody>
 </table>
+
 @endif
+
+<style type="text/css">
+ 
+tbody {
+    display:block;
+    height: calc( 100vh - 460px );
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}
+thead {
+    width: calc( 100% - 8px )/* scrollbar is average 1em/16px width, remove it from thead width */
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+</style>
 
 @endsection
