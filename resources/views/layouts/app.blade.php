@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 
     <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
     
