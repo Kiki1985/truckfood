@@ -69,8 +69,7 @@ class TrucksController extends Controller
 
     public function getlocations()
     {
-        $trucks = Truck::loadlocations();
-        return $trucks; 
+        return Truck::loadlocations();
     }
 
     protected function validateTruck()
