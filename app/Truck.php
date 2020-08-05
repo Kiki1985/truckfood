@@ -46,10 +46,15 @@ class Truck extends Model
     public static function loadlocations()
     {
         $trucks = Truck::all();
+
         $icon = [];
         foreach ($trucks as $truck) {
+            if(!auth()->user()){
+                $icon[] = 'red';    
+            }
             
-            if($truck->user_id == auth()->user()->id || auth()->user()->role == "Admin") {
+            
+            if(auth()->user() &&  ($truck->user_id == auth()->user()->id || auth()->user()->role == "Admin")) {
                 $icon[] = 'blue';
             }else{
                 $icon[] = 'red';
