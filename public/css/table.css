@@ -1,6 +1,6 @@
 tbody {
     display:block;
-    height: calc( 100vh - 460px );
+    max-height: calc( 100vh - 460px );
     overflow:auto;
 }
 thead, tbody tr {

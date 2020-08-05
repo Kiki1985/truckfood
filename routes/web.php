@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'TrucksController@home');
+Route::get('/', 'TrucksController@index');
 
-Route::get('/trucks', 'TrucksController@index')->name('home')->middleware('auth');
+Route::get('/trucks', 'TrucksController@home')->name('home')->middleware('auth');
 
 Route::get('/trucks/create', 'TrucksController@create');
 

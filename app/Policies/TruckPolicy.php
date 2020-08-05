@@ -26,6 +26,6 @@ class TruckPolicy
      */
     public function update(User $user, Truck $truck)
     {
-        return $user->id === $truck->user_id;
+        return $truck->user->is($user);
     }
 }
