@@ -49,7 +49,7 @@ class Truck extends Model
         $icon = [];
         foreach ($trucks as $truck) {
             
-            if($truck->user_id == auth()->user()->id) {
+            if($truck->user_id == auth()->user()->id || auth()->user()->role == "Admin") {
                 $icon[] = 'blue';
             }else{
                 $icon[] = 'red';
