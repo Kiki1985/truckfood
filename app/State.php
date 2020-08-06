@@ -64,6 +64,30 @@ class State extends Model
                'Wisconsin' => [44.500000, -89.500000],
                'Wyoming' => [43.075970, -107.290283],
               ];
-            return $states;
-        }
+        return $states;
+    }
+
+    public function citiesList(){
+        $cities =[
+            'New York' => [40.7127837, -74.0059413],
+
+            'Los Angeles' => [34.0522342, -118.2436849],
+
+            'Chicago'=> [41.8781136, -87.6297982],
+
+            'Houston' => [29.7604267, -95.3698028],
+
+            'Philadelphia' => [39.9525839, -75.1652215],
+
+            'Phoenix' => [33.4483771, -112.0740373],
+
+            'Texas' =>  [29.4241219, -98.4936282],
+
+            'California' => [32.715738, -117.1610838],
+
+            'Dallas' => [32.7766642, -96.7969879],
+        ];
+
+    }
+
 }
